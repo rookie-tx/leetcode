@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 无重复字符的最长子串
  *
@@ -40,6 +43,39 @@
 public class No0003 {
 
     public int lengthOfLongestSubstring(String s) {
-        return 0;
+        Map<Character, Integer> map = new HashMap<>(16);
+        int ans = 0, n = s.length();
+        for (int i = 0, j = 0; j < n; j++) {
+            if (map.containsKey(s.charAt(j))) {
+                i = Math.max(map.get(s.charAt(j)), i);
+            }
+            ans = Math.max(ans, j - i + 1);
+            map.put(s.charAt(j), j + 1);
+        }
+
+        return ans;
+    }
+
+//    public int lengthOfLongestSubstring(String s) {
+//
+//        int result = 0;
+//        int leftIndex = 0, rightIndex = 0;
+//        Set<Character> set = new HashSet<>();
+//        for ( ; leftIndex < s.length(); leftIndex++) {
+//            while (rightIndex < s.length() && !set.contains(s.charAt(rightIndex))) {
+//                set.add(s.charAt(rightIndex));
+//                rightIndex++;
+//            }
+//
+//            set.remove(s.charAt(leftIndex));
+//            result = Math.max(result, rightIndex - leftIndex);
+//        }
+//
+//        return result;
+//    }
+
+    public static void main(String[] args) {
+        No0003 no0003 = new No0003();
+        System.out.println(no0003.lengthOfLongestSubstring(""));
     }
 }
