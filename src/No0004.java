@@ -49,7 +49,7 @@ public class No0004 {
         Set<Integer> targetIndex = new HashSet<>(2);
         targetIndex.add(length / 2);
         if (length % 2 == 0) {
-            targetIndex.add(length / 2 + 1);
+            targetIndex.add(length / 2 - 1);
         }
 
         int n = 0, m = 0, index = 0;
@@ -75,6 +75,6 @@ public class No0004 {
 
     public static void main(String[] args) {
         No0004 no0004 = new No0004();
-        System.out.println(no0004.findMedianSortedArrays(new int[]{1, 3}, new int[]{2}));
+        System.out.println(no0004.findMedianSortedArrays(new int[]{2}, new int[]{}));
     }
 }
